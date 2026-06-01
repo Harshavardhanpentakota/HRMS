@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+:root {
+  /* Default Dark Mode variables (Linear/Vercel SaaS vibe) */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 263.4 70% 50.4%; /* Rich Violet Accent */
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 12%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 263.4 70% 50.4%;
+  
+  --radius: 0.75rem;
+}
+
+.light {
+  /* Sleek Light Mode variables */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  
+  --primary: 262.1 83.3% 57.8%;
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 20% 98%;
+  
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 262.1 83.3% 57.8%;
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism visual helper classes */
+.glass-card {
+  background: rgba(18, 18, 24, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Glowing premium line animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.5));
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* High-specificity Light Mode variable overrides for hardcoded layout and form controls */
+.light .bg-zinc-950 {
+  background-color: hsl(var(--card)) !important;
+}
+.light .bg-zinc-900, 
+.light .bg-zinc-900\/60, 
+.light .bg-zinc-900\/50, 
+.light .bg-zinc-900\/40, 
+.light .bg-zinc-900\/30, 
+.light .bg-zinc-900\/20 {
+  background-color: hsl(var(--secondary)) !important;
+}
+.light .bg-zinc-950\/20, 
+.light .bg-zinc-950\/40, 
+.light .bg-zinc-950\/5 {
+  background-color: hsl(var(--muted)/0.3) !important;
+}
+
+/* Borders color overrides */
+.light .border-zinc-900, 
+.light .border-zinc-850, 
+.light .border-zinc-800 {
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Text color overrides */
+.light .text-white, 
+.light .text-zinc-100 {
+  color: hsl(var(--foreground)) !important;
+}
+.light .text-zinc-300 {
+  color: hsl(var(--foreground)/0.85) !important;
+}
+.light .text-zinc-400, 
+.light .text-zinc-500 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Hovers overrides */
+.light .hover\:bg-zinc-900:hover, 
+.light .hover\:bg-zinc-800:hover {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+.light .hover\:text-white:hover {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Form elements adaptations */
+.light input, 
+.light textarea, 
+.light select {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+.light input::placeholder, 
+.light textarea::placeholder {
+  color: hsl(var(--muted-foreground)/0.7) !important;
+}
+
+/* Dynamic headings and bold elements inside cards */
+.light strong, 
+.light h2, 
+.light h3, 
+.light h4 {
+  color: hsl(var(--foreground)) !important;
+}
+
