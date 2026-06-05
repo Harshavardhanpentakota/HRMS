@@ -135,8 +135,8 @@ const trainingSessions = [
     date: "Jun-05",
     topic: "CSS Advanced + Antigravity Intro",
     concepts: "Animations, Transitions, Tailwind CSS, Antigravity Setup",
-    youtube: "https://youtu.be/5BI5DgzyFAA?si=0MuAkvVOIMLfRF0L",
-    videoId: "5BI5DgzyFAA",
+    youtube: "https://youtu.be/5Bl5DgzyFAA?si=0MuAkvVOIMLfRF0L",
+    videoId: "5Bl5DgzyFAA",
     cheatSheet: {
       syntax: `/* Transitions and Keyframe Animations */
 .glow-card {
