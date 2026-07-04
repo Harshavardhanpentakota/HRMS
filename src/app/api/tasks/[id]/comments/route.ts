@@ -71,7 +71,7 @@ export async function POST(
       title: "New Comment on Task",
       message: `${guard.user!.name} commented on "${task.title}": "${content.slice(0, 40)}..."`,
       type: "Task Updated",
-      link: `/tasks`,
+      link: `/dashboard/tasks`,
     });
 
     return NextResponse.json({

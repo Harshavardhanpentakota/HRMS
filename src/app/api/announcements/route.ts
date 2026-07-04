@@ -101,7 +101,7 @@ export async function POST(req: Request) {
       title: data.pinned ? "📌 Critical Announcement published" : "📢 New Announcement published",
       message: `"${data.title}" was published by ${guard.user!.name}`,
       type: "Announcement Published",
-      link: "/announcements",
+      link: "/dashboard/announcements",
     }));
 
     if (notifications.length > 0) {

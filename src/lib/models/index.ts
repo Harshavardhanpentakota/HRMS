@@ -202,6 +202,21 @@ const AttendanceSchema = new Schema(
   { timestamps: true }
 );
 
+// ==========================================
+// 11. STANDOUT SCHEMA (Weekly Work Summary)
+// ==========================================
+const StandoutSchema = new Schema(
+  {
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    weekStartDate: { type: Date, required: true, index: true },
+    summary: { type: String, required: true },
+    accomplishments: { type: String, default: "" },
+    challenges: { type: String, default: "" },
+    plans: { type: String, default: "" },
+  },
+  { timestamps: true }
+);
+
 // Prevent re-compilation of models during next.js hot-reloads
 export const User = mongoose.models.User || mongoose.model("User", UserSchema);
 export const Team = mongoose.models.Team || mongoose.model("Team", TeamSchema);
@@ -213,3 +228,5 @@ export const TrainingProgress = mongoose.models.TrainingProgress || mongoose.mod
 export const Notification = mongoose.models.Notification || mongoose.model("Notification", NotificationSchema);
 export const ActivityLog = mongoose.models.ActivityLog || mongoose.model("ActivityLog", ActivityLogSchema);
 export const Attendance = mongoose.models.Attendance || mongoose.model("Attendance", AttendanceSchema);
+export const Standout = mongoose.models.Standout || mongoose.model("Standout", StandoutSchema);
+

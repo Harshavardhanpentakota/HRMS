@@ -82,7 +82,7 @@ export async function POST(req: Request) {
         title: "Leave Application Submitted",
         message: `${guard.user!.name} applied for leave from ${new Date(data.startDate).toLocaleDateString()} to ${new Date(data.endDate).toLocaleDateString()}`,
         type: "Leave Approved", // General category helper
-        link: "/leaves",
+        link: "/dashboard/leaves",
       });
     }
 

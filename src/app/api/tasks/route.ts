@@ -112,7 +112,7 @@ export async function POST(req: Request) {
       title: "New Task Assigned",
       message: `You have been assigned a new task: "${data.title}" by ${guard.user!.name}`,
       type: "Task Assigned",
-      link: "/tasks",
+      link: "/dashboard/tasks",
     });
 
     // Log Activity

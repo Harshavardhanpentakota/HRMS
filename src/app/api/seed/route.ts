@@ -10,6 +10,7 @@ import {
   ActivityLog,
   Notification,
   TaskComment,
+  Standout,
 } from "@/lib/models";
 import bcrypt from "bcryptjs";
 
@@ -27,6 +28,7 @@ export async function GET() {
     await TrainingProgress.deleteMany({});
     await Notification.deleteMany({});
     await ActivityLog.deleteMany({});
+    await Standout.deleteMany({});
 
     // 2. Encrypt default password
     const defaultHashedPassword = await bcrypt.hash("password123", 10);

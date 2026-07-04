@@ -20,6 +20,7 @@ import {
   ChevronLeft,
   ChevronRight,
   UserCheck,
+  Star,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -33,6 +34,7 @@ export default function Sidebar() {
   const links = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/dashboard/tasks", label: "Tasks", icon: CheckSquare },
+    { href: "/dashboard/standout", label: "Weekly Standout", icon: Star },
     { href: "/dashboard/leaves", label: "Leaves", icon: Calendar },
     { href: "/dashboard/announcements", label: "Announcements", icon: Megaphone },
     { href: "/dashboard/training", label: "Training Sessions", icon: GraduationCap },

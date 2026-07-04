@@ -38,7 +38,7 @@ export async function PUT(
       title: `Leave Application ${status}`,
       message: `Your leave request from ${new Date(leave.startDate).toLocaleDateString()} has been ${status.toLowerCase()} by ${guard.user!.name}. Remarks: "${remarks || 'None'}"`,
       type: notifType,
-      link: "/leaves",
+      link: "/dashboard/leaves",
     });
 
     // Log Activity

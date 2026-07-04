@@ -56,7 +56,7 @@ export async function PUT(
             title: finalStatus === "Review" ? "Task Work Submitted" : "Task Status Updated",
             message: `${user.name} ${actionText}`,
             type: "Task Updated",
-            link: "/tasks",
+            link: "/dashboard/tasks",
           });
         }
       }
@@ -87,7 +87,7 @@ export async function PUT(
             title: "Task Status Updated",
             message: `Lead/Admin ${user.name} ${actionText}`,
             type: "Task Updated",
-            link: "/tasks",
+            link: "/dashboard/tasks",
           });
         }
       }
