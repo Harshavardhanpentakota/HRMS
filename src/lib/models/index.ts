@@ -185,6 +185,23 @@ const ActivityLogSchema = new Schema(
   }
 );
 
+// ==========================================
+// 10. ATTENDANCE SCHEMA
+// ==========================================
+const AttendanceSchema = new Schema(
+  {
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    date: { type: Date, required: true, index: true },
+    checkInTime: { type: Date, required: true },
+    status: {
+      type: String,
+      enum: ["Present", "Late"],
+      default: "Present",
+    },
+  },
+  { timestamps: true }
+);
+
 // Prevent re-compilation of models during next.js hot-reloads
 export const User = mongoose.models.User || mongoose.model("User", UserSchema);
 export const Team = mongoose.models.Team || mongoose.model("Team", TeamSchema);
@@ -195,3 +212,4 @@ export const Announcement = mongoose.models.Announcement || mongoose.model("Anno
 export const TrainingProgress = mongoose.models.TrainingProgress || mongoose.model("TrainingProgress", TrainingProgressSchema);
 export const Notification = mongoose.models.Notification || mongoose.model("Notification", NotificationSchema);
 export const ActivityLog = mongoose.models.ActivityLog || mongoose.model("ActivityLog", ActivityLogSchema);
+export const Attendance = mongoose.models.Attendance || mongoose.model("Attendance", AttendanceSchema);

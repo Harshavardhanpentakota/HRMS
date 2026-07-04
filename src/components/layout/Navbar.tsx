@@ -113,20 +113,20 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 flex items-center justify-between px-6">
+    <header className="sticky top-0 z-30 h-16 bg-background/80 backdrop-blur-md border-b border-border flex items-center justify-between px-6">
       {/* Left section: mobile hamburger & breadcrumbs */}
       <div className="flex items-center gap-4">
         <button
           onClick={toggleSidebar}
-          className="lg:hidden text-zinc-400 hover:text-white p-2 hover:bg-zinc-900 rounded-lg transition-colors cursor-pointer"
+          className="lg:hidden text-muted-foreground hover:text-foreground p-2 hover:bg-secondary rounded-lg transition-colors cursor-pointer"
         >
           <Menu className="h-5 w-5" />
         </button>
 
-        <div className="hidden sm:flex items-center gap-2.5 text-xs font-semibold text-zinc-400">
+        <div className="hidden sm:flex items-center gap-2.5 text-xs font-semibold text-muted-foreground">
           <span>Workspace</span>
-          <span className="text-zinc-600">/</span>
-          <span className="text-white font-medium">{getBreadcrumbs()}</span>
+          <span className="text-muted-foreground/45">/</span>
+          <span className="text-foreground font-medium">{getBreadcrumbs()}</span>
         </div>
       </div>
 
@@ -135,13 +135,13 @@ export default function Navbar() {
         {/* Command Search Bar Shortcut Button */}
         <button
           onClick={() => setCommandPaletteOpen(true)}
-          className="hidden md:flex items-center gap-3 px-3 py-1.5 bg-zinc-900/60 border border-zinc-900 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 hover:bg-zinc-900 hover:border-zinc-800 transition-all cursor-pointer w-56 justify-between"
+          className="hidden md:flex items-center gap-3 px-3 py-1.5 bg-secondary/60 border border-border rounded-lg text-xs text-muted-foreground hover:text-foreground hover:bg-secondary hover:border-border/80 transition-all cursor-pointer w-56 justify-between"
         >
           <div className="flex items-center gap-2">
-            <Search className="h-3.5 w-3.5 text-zinc-500" />
+            <Search className="h-3.5 w-3.5 text-muted-foreground" />
             <span className="font-normal text-[11px]">Search commands...</span>
           </div>
-          <kbd className="inline-flex items-center h-4.5 select-none pointer-events-none px-1 bg-zinc-950 border border-zinc-800 text-zinc-500 rounded text-[9px] font-mono font-medium">
+          <kbd className="inline-flex items-center h-4.5 select-none pointer-events-none px-1 bg-background border border-border text-muted-foreground rounded text-[9px] font-mono font-medium">
             Ctrl K
           </kbd>
         </button>
@@ -149,7 +149,7 @@ export default function Navbar() {
         {/* Mobile Search Button */}
         <button
           onClick={() => setCommandPaletteOpen(true)}
-          className="md:hidden text-zinc-400 hover:text-white p-2 hover:bg-zinc-900 rounded-lg transition-colors cursor-pointer"
+          className="md:hidden text-muted-foreground hover:text-foreground p-2 hover:bg-secondary rounded-lg transition-colors cursor-pointer"
         >
           <Search className="h-5 w-5" />
         </button>
@@ -157,7 +157,7 @@ export default function Navbar() {
         {/* Light / Dark Mode Toggle */}
         <button
           onClick={toggleTheme}
-          className="text-zinc-400 hover:text-white p-2 hover:bg-zinc-900 rounded-lg transition-colors cursor-pointer"
+          className="text-muted-foreground hover:text-foreground p-2 hover:bg-secondary rounded-lg transition-colors cursor-pointer"
           title="Toggle UI Theme"
         >
           {theme === "dark" ? <Sun className="h-5 w-5 text-amber-400" /> : <Moon className="h-5 w-5 text-indigo-400" />}
@@ -167,11 +167,11 @@ export default function Navbar() {
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setNotifDropdownOpen(!notifDropdownOpen)}
-            className="text-zinc-400 hover:text-white p-2 hover:bg-zinc-900 rounded-lg transition-colors relative cursor-pointer"
+            className="text-muted-foreground hover:text-foreground p-2 hover:bg-secondary rounded-lg transition-colors relative cursor-pointer"
           >
             <Bell className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 h-4 min-w-4 px-1 flex items-center justify-center bg-violet-600 text-[9px] font-bold text-white rounded-full border border-zinc-950 shadow shadow-violet-500/25">
+              <span className="absolute top-1.5 right-1.5 h-4 min-w-4 px-1 flex items-center justify-center bg-violet-600 text-[9px] font-bold text-white rounded-full border border-background shadow shadow-violet-500/25">
                 {unreadCount}
               </span>
             )}
@@ -179,10 +179,10 @@ export default function Navbar() {
 
           {/* Notifications Dropdown Panel */}
           {notifDropdownOpen && (
-            <div className="absolute right-0 mt-3 w-80 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl z-50 flex flex-col">
+            <div className="absolute right-0 mt-3 w-80 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 flex flex-col">
               {/* Dropdown Header */}
-              <div className="px-4 py-3 border-b border-zinc-800 bg-zinc-900/10 flex items-center justify-between">
-                <span className="text-xs font-semibold text-white">Notifications</span>
+              <div className="px-4 py-3 border-b border-border bg-secondary/10 flex items-center justify-between">
+                <span className="text-xs font-semibold text-foreground">Notifications</span>
                 {unreadCount > 0 && (
                   <button
                     onClick={() => markAllAsReadMutation.mutate()}
@@ -194,10 +194,10 @@ export default function Navbar() {
               </div>
 
               {/* Notifications List */}
-              <div className="max-h-[300px] overflow-y-auto divide-y divide-zinc-900">
+              <div className="max-h-[300px] overflow-y-auto divide-y divide-border">
                 {notifications.length === 0 ? (
-                  <div className="py-12 flex flex-col items-center justify-center text-zinc-500">
-                    <Inbox className="h-8 w-8 text-zinc-700 mb-2" />
+                  <div className="py-12 flex flex-col items-center justify-center text-muted-foreground">
+                    <Inbox className="h-8 w-8 text-muted-foreground/60 mb-2" />
                     <span className="text-[11px]">All caught up! No notifications.</span>
                   </div>
                 ) : (
@@ -205,21 +205,21 @@ export default function Navbar() {
                     <button
                       key={notif._id}
                       onClick={() => handleNotificationClick(notif)}
-                      className={`w-full text-left px-4 py-3 hover:bg-zinc-900 flex gap-3 transition-colors ${
-                        !notif.isRead ? "bg-violet-950/10" : ""
+                      className={`w-full text-left px-4 py-3 hover:bg-secondary flex gap-3 transition-colors ${
+                        !notif.isRead ? "bg-violet-500/5" : ""
                       }`}
                     >
                       <div className="mt-0.5">
-                        <AlertCircle className={`h-4 w-4 ${!notif.isRead ? "text-violet-400" : "text-zinc-500"}`} />
+                        <AlertCircle className={`h-4 w-4 ${!notif.isRead ? "text-violet-400" : "text-muted-foreground"}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-[11px] font-semibold text-white leading-tight">
+                        <p className="text-[11px] font-semibold text-foreground leading-tight">
                           {notif.title}
                         </p>
-                        <p className="text-[10px] text-zinc-400 mt-1 truncate">
+                        <p className="text-[10px] text-muted-foreground mt-1 truncate">
                           {notif.message}
                         </p>
-                        <span className="text-[9px] text-zinc-600 block mt-1">
+                        <span className="text-[9px] text-muted-foreground/60 block mt-1">
                           {new Date(notif.createdAt).toLocaleDateString("en-US", {
                             month: "short",
                             day: "numeric",

@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Avatar from "@/components/ui/Avatar";
+import AttendanceWidget from "@/components/dashboard/AttendanceWidget";
 import {
   Users,
   CheckSquare,
@@ -87,6 +88,8 @@ export default async function DashboardPage() {
             </Link>
           </div>
         </div>
+
+        <AttendanceWidget />
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
@@ -284,6 +287,8 @@ export default async function DashboardPage() {
             </Link>
           </div>
         </div>
+
+        <AttendanceWidget />
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -495,6 +500,8 @@ export default async function DashboardPage() {
     .filter((t) => t.status !== "Completed")
     .slice(0, 3);
 
+  const previousTasks = myTasks.filter((t) => t.status === "Completed");
+
   const [
     myLeaves,
     latestAnnouncements,
@@ -532,6 +539,8 @@ export default async function DashboardPage() {
           </Link>
         </div>
       </div>
+
+      <AttendanceWidget />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -621,6 +630,42 @@ export default async function DashboardPage() {
                         }`}
                       >
                         {t.priority}
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">
+                        Due: {new Date(t.dueDate).toLocaleDateString("en-US")}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Previous / Completed Tasks */}
+          <div className="bg-zinc-950 border border-zinc-900 rounded-xl overflow-hidden shadow">
+            <div className="px-5 py-4 border-b border-zinc-900 bg-zinc-950/40 flex items-center justify-between">
+              <h2 className="text-xs font-bold text-white flex items-center gap-2">
+                <CheckSquare className="h-4 w-4 text-emerald-400" /> My Previous/Completed Tasks
+              </h2>
+              <Link href="/dashboard/tasks" className="text-[10px] text-zinc-500 hover:text-white flex items-center gap-1">
+                View All Tasks <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+            <div className="divide-y divide-zinc-900">
+              {previousTasks.length === 0 ? (
+                <p className="text-xs text-zinc-500 p-8 text-center">No completed tasks yet. Finish your pending tasks to see them here!</p>
+              ) : (
+                previousTasks.slice(0, 5).map((t: any) => (
+                  <div key={t._id} className="p-4 flex items-center justify-between text-xs hover:bg-zinc-900/10">
+                    <div className="min-w-0 flex-1 pr-4">
+                      <span className="text-[9px] font-semibold px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 uppercase">
+                        {t.project}
+                      </span>
+                      <h4 className="font-semibold text-white mt-2 truncate line-through opacity-70">{t.title}</h4>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-medium border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+                        Completed
                       </span>
                       <span className="text-[10px] font-mono text-zinc-500">
                         Due: {new Date(t.dueDate).toLocaleDateString("en-US")}
