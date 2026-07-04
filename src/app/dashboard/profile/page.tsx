@@ -299,7 +299,7 @@ export default function ProfilePage() {
                     <input
                       type="text"
                       {...register("githubUsername")}
-                      placeholder="e.g., yeswanthgorusureddy-cificap"
+                      placeholder="e.g., narendramodi-cificap"
                       className="w-full bg-zinc-900 border border-zinc-850 rounded-lg px-3 py-2 text-xs text-white placeholder-zinc-600 focus:outline-none"
                     />
                   </div>
@@ -309,7 +309,7 @@ export default function ProfilePage() {
                     <input
                       type="text"
                       {...register("vercelUsername")}
-                      placeholder="e.g., yeswanthgorusureddy.cificap@gmail.com"
+                      placeholder="e.g., narendramodi.cificap@gmail.com"
                       className="w-full bg-zinc-900 border border-zinc-850 rounded-lg px-3 py-2 text-xs text-white placeholder-zinc-600 focus:outline-none"
                     />
                   </div>
@@ -321,7 +321,7 @@ export default function ProfilePage() {
                     <input
                       type="text"
                       {...register("discordUsername")}
-                      placeholder="e.g., yeswanthgorusureddycificap"
+                      placeholder="e.g., narendramodicificap"
                       className="w-full bg-zinc-900 border border-zinc-850 rounded-lg px-3 py-2 text-xs text-white placeholder-zinc-600 focus:outline-none"
                     />
                   </div>
@@ -331,7 +331,7 @@ export default function ProfilePage() {
                     <input
                       type="text"
                       {...register("clickupEmail")}
-                      placeholder="e.g., yeswanthgorusureddy.cificap@gmail.com"
+                      placeholder="e.g., narendramodi.cificap@gmail.com"
                       className="w-full bg-zinc-900 border border-zinc-850 rounded-lg px-3 py-2 text-xs text-white placeholder-zinc-600 focus:outline-none"
                     />
                   </div>
